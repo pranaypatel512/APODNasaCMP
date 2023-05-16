@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jetbrains.compose.compose
 
 plugins {
@@ -104,4 +105,12 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+}
+
+buildConfig {
+    val apiKey: String = gradleLocalProperties(rootDir).getProperty("apiKey")
+    require(apiKey.isNotEmpty()) {
+        "Register your api key from https://api.nasa.gov/#signUp and place it in local.properties as `apiKey`"
+    }
+    buildConfigField("String", "API_KEY", apiKey)
 }
