@@ -1,3 +1,5 @@
+package com.pranay.aPODNasaKMP.ui.theme
+
 import androidx.compose.ui.graphics.Color
 
 val Blue70 = Color(0xFF6666FF)
