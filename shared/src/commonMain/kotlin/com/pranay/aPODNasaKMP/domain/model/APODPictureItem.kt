@@ -1,7 +1,8 @@
-package com.example.common.domain.model
+package com.pranay.aPODNasaKMP.domain.model
 import kotlinx.serialization.Serializable
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import com.pranay.aPODNasaKMP.domain.model.MediaType
 
 
 /**
@@ -20,5 +21,5 @@ data class APODPictureItem(
     var thumbnail_url: String? = null,
     var title: String? = null
 ): Parcelable {
-    //fun isVideo(): Boolean = media_type == MediaType.video.toString()
+    fun isVideo(): Boolean = media_type == MediaType.video.toString()
 }

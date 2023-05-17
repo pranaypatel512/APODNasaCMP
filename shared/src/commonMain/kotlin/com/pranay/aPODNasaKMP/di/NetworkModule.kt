@@ -1,6 +1,7 @@
 package com.pranay.aPODNasaKMP.di
 
 import MyApplication.shared.BuildConfig
+import com.pranay.aPODNasaKMP.util.Constants
 import com.pranay.aPODNasaKMP.util.Constants.NASA_API_URL
 import com.pranay.aPODNasaKMP.util.logger.initLogger
 import io.github.aakira.napier.Napier
@@ -38,10 +39,17 @@ val networkModule = module {
                     level = LogLevel.BODY
                 }.also { initLogger() }
 
-                defaultRequest {
+                /*defaultRequest {
                     url {
                         protocol = URLProtocol.HTTPS
                         host = NASA_API_URL
+                        parameters.append("api_key", BuildConfig.API_KEY)
+                    }
+                }*/
+                defaultRequest {
+                    url {
+                        url(NASA_API_URL)
+                        protocol = URLProtocol.HTTPS
                         parameters.append("api_key", BuildConfig.API_KEY)
                     }
                 }

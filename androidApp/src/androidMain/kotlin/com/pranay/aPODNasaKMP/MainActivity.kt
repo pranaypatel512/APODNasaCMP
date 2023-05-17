@@ -12,7 +12,6 @@ import com.pranay.aPODNasaKMP.krouter.LocalComponentContext
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val rootComponentContext: DefaultComponentContext = defaultComponentContext()
 
