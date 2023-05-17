@@ -28,8 +28,12 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+            export("com.arkivanov.decompose:decompose:2.0.0-compose-experimental-alpha-02")
+            export("com.arkivanov.decompose:extensions-compose-jetbrains:2.0.0-compose-experimental-alpha-02")
+            export("com.arkivanov.essenty:parcelable:1.1.0")
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
