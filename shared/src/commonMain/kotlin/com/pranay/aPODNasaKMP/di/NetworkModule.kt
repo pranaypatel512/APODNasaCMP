@@ -48,7 +48,7 @@ val networkModule = module {
                 }*/
                 defaultRequest {
                     url {
-                        url(NASA_API_URL)
+                        //url(NASA_API_URL) //TODO: #1 resolve base url issue with DI
                         protocol = URLProtocol.HTTPS
                         parameters.append("api_key", BuildConfig.API_KEY)
                     }
