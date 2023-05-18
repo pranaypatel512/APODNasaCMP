@@ -1,3 +1,6 @@
+![](https://github.com/pranaypatel512/APODNasaCMP/blob/main/extra/APODNasaCMP.svg)
+<div id="top"></div>
+
 # APODNasaCMP 🪐 - Kotlin Multiplatform app
 
 App related to show [Astronomy Picture of the Day(APOD)](http://apod.nasa.gov/apod/astropix.html)
