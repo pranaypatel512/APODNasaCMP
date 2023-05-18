@@ -13,10 +13,10 @@ class GetAPODNasaMediaListUseCase(
 ) : UseCase<NetworkResultState<List<APODPictureItem>>, Int> {
     suspend operator fun invoke(count: Int) =
         repository.getAPODPictures(count).isLoading { isLoading ->
-                HomeUiState(isLoading = isLoading)
-            }.onSuccess { apodPictureItemList ->
-                HomeUiState(apodPictureItemList = apodPictureItemList)
-            }.onFailure { error ->
-                HomeUiState(error = error.message)
-            }
+            HomeUiState(isLoading = isLoading)
+        }.onSuccess { apodPictureItemList ->
+            HomeUiState(apodPictureItemList = apodPictureItemList)
+        }.onFailure { error ->
+            HomeUiState(error = error.message)
+        }
 }

@@ -1,6 +1,5 @@
 package com.pranay.aPODNasaKMP.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.ui.graphics.Color
 
 val md_theme_light_primary = Color(0xFF8307F0)
