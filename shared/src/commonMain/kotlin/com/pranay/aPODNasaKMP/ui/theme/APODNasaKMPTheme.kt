@@ -32,6 +32,7 @@ private val DarkColors = darkColors(
     surface = md_theme_dark_surface,
     onSurface = md_theme_dark_onSurface,
 )
+
 @Composable
 fun APODNasaKMPTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
