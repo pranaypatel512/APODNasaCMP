@@ -11,7 +11,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.interop.LocalUIViewController
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import kotlin.coroutines.CoroutineContext
 import kotlinx.cinterop.ObjCAction
 import kotlinx.cinterop.useContents
 import kotlinx.coroutines.CoroutineScope
@@ -29,6 +28,7 @@ import platform.UIKit.UIKeyboardWillShowNotification
 import platform.UIKit.UIView
 import platform.UIKit.UIViewController
 import platform.darwin.NSObject
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Copied from library: https://github.com/mori-atsushi/insetsx
