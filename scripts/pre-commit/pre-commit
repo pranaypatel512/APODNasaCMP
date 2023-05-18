@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+echo "Running auto formatter"
+./gradlew detekt --auto-correct
+
+echo "Running detekt check..."
+LOG="/tmp/detekt-$(date +%s)"
+./gradlew detekt > $LOG
+
+EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
+  cat $LOG
+  rm $LOG
+  echo "***********************************************"
+  echo "                 Detekt failed                 "
+  echo " Please fix the above issues before committing "
+  echo "***********************************************"
+  exit $EXIT_CODE
+fi
+rm $LOG
+
+echo "Running ktlint check..."
+
+./gradlew ktlintFormat
+
+STATUS=$?
+if [ $STATUS -ne 0 ]; then
+  echo "***********************************************"
+  echo "                 ktlint failed                 "
+  echo " Please fix the above issues before committing "
+  echo "***********************************************"
+  exit $STATUS
+fi

@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.buildconfig)
     id("kotlin-parcelize")
     kotlin("plugin.serialization") version "1.8.20"
-
 }
 
 kotlin {
@@ -19,6 +18,13 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    jvm("desktop") {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
     cocoapods {
         version = "1.0.0"
         summary = "Some description for the Shared Module"
@@ -60,8 +66,7 @@ kotlin {
                 implementation(libs.aakira.napier)
                 implementation(libs.multiplatform.settings.noArg)
                 implementation(libs.multiplatform.settings.coroutines)
-                //implementation(libs.decompose.router)
-
+                // implementation(libs.decompose.router)
             }
         }
         val androidMain by getting {
@@ -85,6 +90,13 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
                 implementation(libs.ktor.client.darwin)
+            }
+        }
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.common)
+                implementation("io.ktor:ktor-client-okhttp:2.3.0")
+                implementation("org.slf4j:slf4j-simple:2.0.7")
             }
         }
     }
