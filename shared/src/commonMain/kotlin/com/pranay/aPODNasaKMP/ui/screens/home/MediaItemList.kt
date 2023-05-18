@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.pranay.aPODNasaKMP.domain.model.APODPictureItem
 import com.pranay.aPODNasaKMP.ui.componants.MediaItemComponent
+import com.pranay.aPODNasaKMP.util.columnMinimumSize
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -30,13 +31,12 @@ fun MediaItemList(
 
     LazyVerticalStaggeredGrid(
         modifier = modifier.padding(top = 4.dp, bottom = 8.dp),
-        columns = StaggeredGridCells.Adaptive(140.dp),
+        columns = StaggeredGridCells.Adaptive(columnMinimumSize),
         contentPadding = PaddingValues(2.dp)
     ) {
         if (mediaList.isNotEmpty()) {
             itemsIndexed(mediaList) { index, photoItem ->
-                key(index){
-
+                key(index) {
                 }
                 MediaItemComponent(
                     modifier = Modifier.clickable {

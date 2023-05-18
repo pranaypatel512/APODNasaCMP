@@ -41,7 +41,7 @@ suspend fun parseNetworkError(
 ): Exception {
     throw errorResponse?.body<ErrorResponse>() ?: ErrorResponse(
         code = 0,
-        service_version="v1",
+        service_version = "v1",
         msg = exception?.message ?: "Error"
     )
 }

@@ -1,8 +1,6 @@
 package com.pranay.aPODNasaKMP.di
 
 import MyApplication.shared.BuildConfig
-import com.pranay.aPODNasaKMP.util.Constants
-import com.pranay.aPODNasaKMP.util.Constants.NASA_API_URL
 import com.pranay.aPODNasaKMP.util.logger.initLogger
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
@@ -21,7 +19,7 @@ import org.koin.dsl.module
 val networkModule = module {
     single {
         HttpClient {
-            install(ContentNegotiation){
+            install(ContentNegotiation) {
                 json(
                     Json {
                         ignoreUnknownKeys = true
@@ -30,8 +28,8 @@ val networkModule = module {
                         explicitNulls = false
                     }
                 )
-                install(Logging){
-                    logger = object :Logger{
+                install(Logging) {
+                    logger = object : Logger {
                         override fun log(message: String) {
                             Napier.i(tag = "Http Client", message = message)
                         }
@@ -48,7 +46,7 @@ val networkModule = module {
                 }*/
                 defaultRequest {
                     url {
-                        //url(NASA_API_URL) //TODO: #1 resolve base url issue with DI
+                        // url(NASA_API_URL) //TODO: #1 resolve base url issue with DI
                         protocol = URLProtocol.HTTPS
                         parameters.append("api_key", BuildConfig.API_KEY)
                     }

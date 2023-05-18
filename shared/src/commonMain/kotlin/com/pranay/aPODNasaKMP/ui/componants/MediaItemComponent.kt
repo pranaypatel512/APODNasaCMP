@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -46,12 +45,20 @@ fun MediaItemComponent(
             Color.Transparent
         ),
     ) {
-        Column (
+        Column(
             modifier = modifier.fillMaxSize()
         ) {
             AsyncImage(
                 imageUrl = backgroundImageUrl,
                 loadingPlaceholder = {
+                    Image(
+                        painter = placeHolderImage,
+                        contentScale = ContentScale.Crop,
+                        contentDescription = null,
+                        modifier = Modifier.matchParentSize()
+                    )
+                },
+                errorPlaceholder = {
                     Image(
                         painter = placeHolderImage,
                         contentScale = ContentScale.Crop,
@@ -67,9 +74,9 @@ fun MediaItemComponent(
                 style = TextStyle.Default.copy(color = Color.White.copy(alpha = 0.8f), fontSize = 14.sp),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
-                modifier=Modifier.padding(start = 4.dp, end = 4.dp, top = 4.dp)
+                modifier = Modifier.padding(start = 4.dp, end = 4.dp, top = 4.dp)
             )
-            Row(modifier=Modifier.padding(horizontal = 4.dp, vertical = 4.dp)) {
+            Row(modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)) {
                 Text(
                     text = mediaItem.date.orEmpty(),
                     style = TextStyle.Default.copy(color = Color.White.copy(alpha = 0.6f), fontSize = 12.sp),

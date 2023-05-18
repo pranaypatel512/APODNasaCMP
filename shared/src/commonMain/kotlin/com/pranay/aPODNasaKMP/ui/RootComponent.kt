@@ -14,8 +14,7 @@ import com.pranay.aPODNasaKMP.ui.screens.home.HomeScreen
 import com.pranay.aPODNasaKMP.ui.theme.APODNasaKMPTheme
 
 @Composable
-fun RootComponent(
-) {
+fun RootComponent() {
     val router = rememberRouter(RootStateModel::class, listOf(RootStateModel.HomeScreen))
     APODNasaKMPTheme(darkTheme = true) {
         RoutedContent(

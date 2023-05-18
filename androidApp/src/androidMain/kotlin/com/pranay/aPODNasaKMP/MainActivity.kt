@@ -11,7 +11,6 @@ import com.arkivanov.decompose.defaultComponentContext
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.pranay.aPODNasaKMP.krouter.LocalComponentContext
 import com.pranay.aPODNasaKMP.ui.theme.md_theme_dark_background
-import com.pranay.aPODNasaKMP.ui.theme.md_theme_dark_surface
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
