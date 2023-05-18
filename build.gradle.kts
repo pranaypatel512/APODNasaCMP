@@ -85,7 +85,5 @@ tasks.register("installGitHooks", Exec::class.java) {
 }
 
 afterEvaluate {
-    tasks.named("clean") {
-        dependsOn(":installGitHooks")
-    }
+    tasks.getByPath(":shared:preBuild").dependsOn(":installGitHooks")
 }

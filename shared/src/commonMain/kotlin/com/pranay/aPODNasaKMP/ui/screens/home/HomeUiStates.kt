@@ -5,7 +5,7 @@ import com.arkivanov.essenty.parcelable.Parcelize
 import com.pranay.aPODNasaKMP.domain.model.APODPictureItem
 
 @Parcelize
-data class HomeUiState(
+data class HomeUiStates(
     val isLoading: Boolean = true,
     val error: String? = null,
     val apodPictureItemList: List<APODPictureItem>? = emptyList(),

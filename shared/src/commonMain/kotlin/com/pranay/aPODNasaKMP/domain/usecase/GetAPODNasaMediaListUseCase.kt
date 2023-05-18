@@ -6,17 +6,17 @@ import com.pranay.aPODNasaKMP.domain.model.APODPictureItem
 import com.pranay.aPODNasaKMP.domain.onFailure
 import com.pranay.aPODNasaKMP.domain.onSuccess
 import com.pranay.aPODNasaKMP.domain.repositories.NasaPicturesRepository
-import com.pranay.aPODNasaKMP.ui.screens.home.HomeUiState
+import com.pranay.aPODNasaKMP.ui.screens.home.HomeUiStates
 
 class GetAPODNasaMediaListUseCase(
     private val repository: NasaPicturesRepository
 ) : UseCase<NetworkResultState<List<APODPictureItem>>, Int> {
     suspend operator fun invoke(count: Int) =
         repository.getAPODPictures(count).isLoading { isLoading ->
-            HomeUiState(isLoading = isLoading)
+            HomeUiStates(isLoading = isLoading)
         }.onSuccess { apodPictureItemList ->
-            HomeUiState(apodPictureItemList = apodPictureItemList)
+            HomeUiStates(apodPictureItemList = apodPictureItemList)
         }.onFailure { error ->
-            HomeUiState(error = error.message)
+            HomeUiStates(error = error.message)
         }
 }

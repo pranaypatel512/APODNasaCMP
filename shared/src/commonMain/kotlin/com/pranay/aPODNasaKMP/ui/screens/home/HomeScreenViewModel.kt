@@ -19,9 +19,9 @@ import org.koin.core.component.inject
 
 class HomeScreenViewModel(private val savedState: SavedStateHandle) : ViewModel() {
     private val nasaAPODNasaMediaListUseCase: GetAPODNasaMediaListUseCase by inject()
-    private val _state: MutableStateFlow<HomeUiState> =
-        MutableStateFlow(savedState.get() ?: HomeUiState())
-    val state: StateFlow<HomeUiState> = _state.asStateFlow()
+    private val _state: MutableStateFlow<HomeUiStates> =
+        MutableStateFlow(savedState.get() ?: HomeUiStates())
+    val state: StateFlow<HomeUiStates> = _state.asStateFlow()
 
     init {
         fetchAPODNasaPictures()

@@ -1,7 +1,5 @@
 package com.pranay.aPODNasaKMP.di
 
-import MyApplication.shared.BuildConfig
-import com.pranay.aPODNasaKMP.util.Constants.NASA_API_URL
 import com.pranay.aPODNasaKMP.util.logger.initLogger
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
@@ -48,7 +46,6 @@ val networkModule = module {
 //                        parameters.append("api_key", BuildConfig.API_KEY)
                     }
                 }
-
             }
         }
     }

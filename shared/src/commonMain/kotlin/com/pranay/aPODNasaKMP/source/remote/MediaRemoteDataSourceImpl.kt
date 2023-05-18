@@ -1,17 +1,13 @@
 package com.pranay.aPODNasaKMP.source.remote
 
 import MyApplication.shared.BuildConfig
-import androidx.compose.ui.graphics.vector.addPathNodes
 import com.pranay.aPODNasaKMP.domain.NetworkResultState
 import com.pranay.aPODNasaKMP.domain.model.APODPictureItem
 import com.pranay.aPODNasaKMP.util.Constants
 import com.pranay.aPODNasaKMP.util.safeApiCallHandler
-import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
-import io.ktor.client.request.url
-
 import io.ktor.client.request.parameter
 
 class MediaRemoteDataSourceImpl constructor(
