@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 
-class HomeScreenViewModel(private val savedState: SavedStateHandle):ViewModel() {
+class HomeScreenViewModel(private val savedState: SavedStateHandle) : ViewModel() {
     private val nasaAPODNasaMediaListUseCase: GetAPODNasaMediaListUseCase by inject()
     private val _state: MutableStateFlow<HomeUiState> =
         MutableStateFlow(savedState.get() ?: HomeUiState())
@@ -29,11 +29,10 @@ class HomeScreenViewModel(private val savedState: SavedStateHandle):ViewModel() 
     }
 
     private fun fetchAPODNasaPictures() = CoroutineScope(coroutineContext).launch {
-        when(val result = nasaAPODNasaMediaListUseCase.invoke(25))
-        {
+        when (val result = nasaAPODNasaMediaListUseCase.invoke(25)) {
             is NetworkResultState.Loading -> {
                 Napier.i("State:Loading")
-                result.isLoading {isLoading->
+                result.isLoading { isLoading ->
                     _state.update { it.copy(isLoading = isLoading) }
                 }
             }

@@ -19,6 +19,8 @@ buildconfig = "4.0.3"
 napier = "2.6.1"
 multiplatform-settings = "1.0.0"
 decompose-router="0.1.0"
+ktLint = "10.3.0"
+detekt = "1.22.0"
 
 
 [libraries]
@@ -65,4 +67,6 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildconfig" }
+ktLint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktLint" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 

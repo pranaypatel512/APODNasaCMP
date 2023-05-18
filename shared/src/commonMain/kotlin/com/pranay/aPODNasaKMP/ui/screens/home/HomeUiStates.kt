@@ -9,4 +9,4 @@ data class HomeUiState(
     val isLoading: Boolean = true,
     val error: String? = null,
     val apodPictureItemList: List<APODPictureItem>? = emptyList(),
-):Parcelable
+) : Parcelable
