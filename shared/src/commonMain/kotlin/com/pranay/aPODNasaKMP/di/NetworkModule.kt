@@ -1,6 +1,7 @@
 package com.pranay.aPODNasaKMP.di
 
 import MyApplication.shared.BuildConfig
+import com.pranay.aPODNasaKMP.util.Constants.NASA_API_URL
 import com.pranay.aPODNasaKMP.util.logger.initLogger
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
@@ -9,7 +10,9 @@ import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.http.ContentType
 import io.ktor.http.URLProtocol
+import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -37,20 +40,15 @@ val networkModule = module {
                     level = LogLevel.BODY
                 }.also { initLogger() }
 
-                /*defaultRequest {
-                    url {
-                        protocol = URLProtocol.HTTPS
-                        host = NASA_API_URL
-                        parameters.append("api_key", BuildConfig.API_KEY)
-                    }
-                }*/
                 defaultRequest {
                     url {
-                        // url(NASA_API_URL) //TODO: #1 resolve base url issue with DI
+                        contentType(ContentType.Application.Json.withParameter("charset", "utf-8"))
+//                        url(NASA_API_URL)
                         protocol = URLProtocol.HTTPS
-                        parameters.append("api_key", BuildConfig.API_KEY)
+//                        parameters.append("api_key", BuildConfig.API_KEY)
                     }
                 }
+
             }
         }
     }

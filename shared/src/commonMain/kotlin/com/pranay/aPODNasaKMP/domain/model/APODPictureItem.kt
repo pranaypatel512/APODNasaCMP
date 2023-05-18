@@ -21,5 +21,5 @@ data class APODPictureItem(
 ) : Parcelable {
     fun isVideo(): Boolean = media_type == MediaType.video.toString()
 
-    fun imageUrl(): String? = if (isVideo())thumbnail_url else url
+    fun imageUrl(): String? = if (isVideo()) thumbnail_url else url
 }

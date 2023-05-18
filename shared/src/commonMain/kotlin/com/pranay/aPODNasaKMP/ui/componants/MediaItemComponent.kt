@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -37,7 +38,7 @@ fun MediaItemComponent(
 ) {
     Card(
         modifier = modifier
-            .wrapContentHeight()
+            .fillMaxSize()
             .padding(4.dp),
         shape = RoundedCornerShape(5),
         border = if (imageSelectedState) BorderStroke(1.dp, Color.Yellow) else BorderStroke(
@@ -68,6 +69,7 @@ fun MediaItemComponent(
                 },
                 contentDescription = null,
                 contentScale = ContentScale.FillBounds,
+                modifier = Modifier.fillMaxSize()
             )
             Text(
                 text = mediaItem.title.orEmpty(),
