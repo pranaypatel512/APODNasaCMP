@@ -1,8 +1,14 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import org.jetbrains.compose.compose
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    alias(libs.plugins.buildconfig)
+    id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "1.8.20"
 }
 
 kotlin {
@@ -12,6 +18,13 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    jvm("desktop") {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
     cocoapods {
         version = "1.0.0"
         summary = "Some description for the Shared Module"
@@ -21,8 +34,12 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+            export("com.arkivanov.decompose:decompose:2.0.0-compose-experimental-alpha-02")
+            export("com.arkivanov.decompose:extensions-compose-jetbrains:2.0.0-compose-experimental-alpha-02")
+            export("com.arkivanov.essenty:parcelable:1.1.0")
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
@@ -31,15 +48,36 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
+                implementation(compose.ui)
+                implementation(compose("org.jetbrains.compose.ui:ui-util"))
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.datetime)
+                implementation(libs.koin.core)
+                implementation(libs.essenty.parcelable)
+                api(libs.decompose)
+                implementation(libs.decompose.compose.multiplatform)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.client.serialization.json)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.aakira.napier)
+                implementation(libs.multiplatform.settings.noArg)
+                implementation(libs.multiplatform.settings.coroutines)
+                // implementation(libs.decompose.router)
             }
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.activity:activity-compose:1.6.1")
-                api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.9.0")
+                api(libs.androidx.appcompat)
+                api(libs.androidx.activityCompose)
+                api(libs.compose.uitooling)
+                api(libs.kotlinx.coroutines.android)
+                api(libs.koin.android)
+                api(libs.coil.compose)
+                implementation(libs.ktor.client.okhttp)
             }
         }
         val iosX64Main by getting
@@ -50,13 +88,23 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(libs.ktor.client.darwin)
+            }
+        }
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.common)
+                implementation("io.ktor:ktor-client-okhttp:2.3.0")
+                implementation("org.slf4j:slf4j-simple:2.0.7")
+            }
         }
     }
 }
 
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
-    namespace = "com.myapplication.common"
+    namespace = "com.pranay.aPODNasaKMP"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -73,4 +121,12 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+}
+
+buildConfig {
+    val apiKey: String = gradleLocalProperties(rootDir).getProperty("apiKey")
+    require(apiKey.isNotEmpty()) {
+        "Register your api key from https://api.nasa.gov/#signUp and place it in local.properties as `apiKey`"
+    }
+    buildConfigField("String", "API_KEY", apiKey)
 }
