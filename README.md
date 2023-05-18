@@ -1,4 +1,4 @@
-# APODNasaCMP - Multiplatform app
+# APODNasaCMP 🪐 - Kotlin Multiplatform app
 
 App related to show [Astronomy Picture of the Day(APOD)](http://apod.nasa.gov/apod/astropix.html)
 for last seven days. An app to show media listing using [APOD](https://api.nasa.gov/) api having
@@ -68,7 +68,7 @@ This module contains shared code that holds the common [Compose Multiplatform](h
 | 🩶  Framework         |  [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform)  |
 | 💉  DI                |          [Koin](https://insert-koin.io/docs/reference/koin-mp/kmp/)           |
 | 🧶  Multi-threading   |     [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines)      |
-| 🌐  Networking        |                    [KTor](https://github.com/ktorio/ktor)                     |
+| 🌐  Networking        |                    [Ktor](https://github.com/ktorio/ktor)                     |
 | 🕜  Lifecycle         |                [Essenty](https://github.com/arkivanov/Essenty)                |
 | 📁  State Management  |              [Decompose](https://github.com/arkivanov/decompose)              |
 | 🧭  Navigation        |              [xxfast/KRouter](https://github.com/xxfast/KRouter)              |
@@ -77,6 +77,12 @@ This module contains shared code that holds the common [Compose Multiplatform](h
 ## ⚒️ Architecture
 
 This app follows the principles of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+
+## ✅ Lint 
+
+* This project uses [ktlint](https://pinterest.github.io/ktlint/) and [detekt](https://github.com/detekt/detekt) for validate kotlin code.
+* Project will setup [githook](https://git-scm.com/docs/githooks) to validate code before commit.
+
 
 ## 📷 Screenshots / Video
 
