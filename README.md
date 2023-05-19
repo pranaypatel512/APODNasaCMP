@@ -83,7 +83,7 @@ This app follows the principles of [Clean Architecture](https://blog.cleancoder.
 
 ## ✅ Lint 
 
-* This project uses [ktlint](https://pinterest.github.io/ktlint/) and [detekt](https://github.com/detekt/detekt) for validate kotlin code.
+* This project uses [ktlint](https://pinterest.github.io/ktlint/) <image src="https://avatars.githubusercontent.com/u/28276062?s=200&v=4" height="18px" width="24px"/> and [detekt](https://github.com/detekt/detekt) <image src="https://detekt.dev/img/favicon.svg" height="18px" width="24px"/> for validate kotlin code.
 * Project will setup [githook](https://git-scm.com/docs/githooks) to validate code before commit.
 
 
